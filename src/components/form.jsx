@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Form,
   Input,
   Select,
-  Button
 } from 'antd';
 
 const FormSizeDemo = React.forwardRef((props, ref) => {
@@ -19,7 +18,6 @@ const FormSizeDemo = React.forwardRef((props, ref) => {
       ig_handle: '@add',
       date: '2020-08-08 19:00'
     })
-    console.log(newData)
     return newData
    })
   }

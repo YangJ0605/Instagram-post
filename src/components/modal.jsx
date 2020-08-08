@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
-import { Modal, Form } from 'antd';
+import React, {useRef } from 'react'
+import { Modal} from 'antd';
 import FormComponent from '../components/form'
 
 const ModalComponent = ({showModal, setShowModal, setAllPostData}) => {
