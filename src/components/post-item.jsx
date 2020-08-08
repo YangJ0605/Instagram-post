@@ -5,6 +5,8 @@ import LazyLoad from 'react-lazyload'
 import {monthObj} from '../utils/month'
 import Loading from '../components/Loading'
 // import logo from '../utils/logo512.png'
+import {useHistory} from 'react-router-dom'
+
 
 export const PostWrapper = styled.div`
 max-width: 1200px;
@@ -28,6 +30,7 @@ flex-wrap: wrap;
     height: 100%;
     width: 100%;
     object-fit: cover;
+    cursor: pointer;
   }
   footer {
     margin-top: 5px;
@@ -77,6 +80,7 @@ flex-wrap: wrap;
 `
 const LazyImage = (props) => {
   const [isLoaded, setIsLoaded] = useState(false)
+  const history = useHistory()
   useEffect(() => {
     const img = new Image()
     img.src = props.src
@@ -87,10 +91,13 @@ const LazyImage = (props) => {
     }
   }, [props.src])
 
+  const handleClick = () => {
+    history.push({pathname: '/post/' + props._uid, state: props.content})
+  }
   return (
     <>
     {
-      isLoaded ? <img src={props.src} alt=''/> : <Loading />
+      isLoaded ? <img src={props.src} alt='' onClick={handleClick}/> : <Loading />
     }
     </>
   )
@@ -102,7 +109,7 @@ const PostItem = ({post}) =>  {
   return  (
     <div className='item'>
       <LazyLoad height={450}>
-      <LazyImage src={post.image}/>
+      <LazyImage src={post.image} {...post}/>
       </LazyLoad>
       <footer>
         <div className='ig_hanle'>{post.ig_handle}</div>

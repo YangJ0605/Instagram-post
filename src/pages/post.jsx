@@ -4,7 +4,7 @@ import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { getData } from "../request/getPostPage";
 import Layout from "../components/layout";
 import Header from '../components/header'
-import PostItem ,{PostWrapper} from '../components/post-item'
+import PostItem, {PostWrapper} from '../components/post-item'
 
 const { Panel } = Collapse;
 
