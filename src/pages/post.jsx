@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Collapse } from "antd";
+import { Collapse, Button} from "antd";
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons";
 import { getData } from "../request/getPostPage";
 import Layout from "../components/layout";
 import Header from '../components/header'
 import PostItem, {PostWrapper} from '../components/post-item'
+import Modal from '../components/modal'
 
 const { Panel } = Collapse;
 
@@ -16,9 +17,7 @@ const postArr = ["Storage", "Bedroom", "Living", "Dining", "Other"];
 
 const Post = () => {
   const [allPostData, setAllPostData] = useState(null)
-  const genExpandIcon = ({ isActive }) => {
-    return <div>{isActive ? <MinusOutlined /> : <PlusOutlined />}</div>;
-  };
+  const [showModal, setShowModal] = useState(false)
   useEffect(() => {
     (async () => {
       const {
@@ -28,8 +27,17 @@ const Post = () => {
     })();
   }, []);
 
+  const genExpandIcon = ({ isActive }) => {
+    return <div>{isActive ? <MinusOutlined /> : <PlusOutlined />}</div>;
+  };
+
+  const handleAdd = () => {
+    console.log('add')
+    setShowModal(true)
+  }
   return (
     <Layout>
+      <Button className='add-btn' onClick={handleAdd}>添加</Button>
       <Collapse
         defaultActiveKey={["0"]}
         onChange={callback}
@@ -53,6 +61,7 @@ const Post = () => {
           ))
         }
       </Collapse>
+      <Modal showModal = {showModal} setShowModal={setShowModal} setAllPostData={setAllPostData}/>
     </Layout>
   );
 };

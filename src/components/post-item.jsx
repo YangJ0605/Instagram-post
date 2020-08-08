@@ -4,7 +4,6 @@ import day from 'dayjs'
 import LazyLoad from 'react-lazyload'
 import {monthObj} from '../utils/month'
 import Loading from '../components/Loading'
-// import logo from '../utils/logo512.png'
 import {useHistory} from 'react-router-dom'
 
 
